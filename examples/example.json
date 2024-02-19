@@ -1,0 +1,35 @@
+{
+    "FileName": "T1.nii",
+    "Modality": "T1-weighted",
+    "Dimensions": [192, 256, 256],
+    "VoxelSize": [1.0, 1.0, 1.0],
+    "DataType": "int16",
+    "Orientation": "RAS",
+    "Description": "T1-weighted MRI scan of the brain",
+    "ScannerManufacturer": "Siemens",
+    "ScannerModel": "PRISMA 3T",
+    "AcquisitionParameters": {
+      "TR": 2000,
+      "TE": 2.98,
+      "FlipAngle": 9,
+      "FOV": [256, 256, 192],
+      "SliceThickness": 1.0,
+      "NumberOfSlices": 192,
+      "SequenceName": "MPRAGE",
+      "SequenceVariant": "GR",
+      "SequenceType": "3D",
+      "InversionTime": 900,
+      "AccelerationFactor": 2
+    },
+    "PatientInformation": {
+      "PatientID": "123456",
+      "PatientAge": 30,
+      "PatientSex": "Male",
+      "PatientWeight": 70
+    },
+    "StudyInformation": {
+      "StudyID": "7890",
+      "StudyDate": "2024-02-10",
+      "StudyDescription": "Brain MRI"
+    }
+  }

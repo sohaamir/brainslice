@@ -1,0 +1,2 @@
+[console_scripts]
+brainslice = brainslice.cli:entry_point

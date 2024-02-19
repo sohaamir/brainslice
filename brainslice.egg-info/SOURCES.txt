@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+brainslice/__init__.py
+brainslice/cli.py
+brainslice/slice.py
+brainslice.egg-info/PKG-INFO
+brainslice.egg-info/SOURCES.txt
+brainslice.egg-info/dependency_links.txt
+brainslice.egg-info/entry_points.txt
+brainslice.egg-info/requires.txt
+brainslice.egg-info/top_level.txt
+tests/__init__.py
