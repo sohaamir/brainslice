@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='brainslice',
+    name='brainslicer',
     version='0.1.0',
     author='Your Name',
     description='A tool for displaying NIFTI image slices.',
@@ -13,7 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'brainslice=brainslice.cli:entry_point',
+            'brainslicer=brainslicer.cli:entry_point',
         ],
     },
 )
