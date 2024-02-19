@@ -1,9 +1,9 @@
 LICENSE
 README.md
 setup.py
-brainslice/__init__.py
-brainslice/cli.py
-brainslice/slice.py
+brainslicer/__init__.py
+brainslicer/cli.py
+brainslicer/slice.py
 brainslicer.egg-info/PKG-INFO
 brainslicer.egg-info/SOURCES.txt
 brainslicer.egg-info/dependency_links.txt
