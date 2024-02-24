@@ -30,7 +30,7 @@ def adjust_brightness_contrast(image, brightness=1.0, contrast=1.0):
     image = enhancer.enhance(contrast)
     return image
 
-def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0):
+def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, colourmap='gray'):
     slice_img_array = load_slice(file_path, slice_number, plane)
     slice_img = Image.fromarray(slice_img_array)
     slice_img = adjust_brightness_contrast(slice_img, brightness, contrast)
@@ -42,7 +42,7 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0):
     output_file_name = f"{original_image_name}_{plane}_{slice_number}.png"
     
     # Define the output directory (you can adjust this path as needed)
-    output_dir = "output"
+    output_dir = "brainslices"
     os.makedirs(output_dir, exist_ok=True)  # Create the output directory if it does not exist
     
     # Full path for the output image
