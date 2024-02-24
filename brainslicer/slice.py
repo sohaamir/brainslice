@@ -1,6 +1,7 @@
 import os
 import nibabel as nib
 import numpy as np
+import matplotlib.pyplot as plt
 from PIL import Image, ImageEnhance
 
 def load_slice(file_path, slice_number, plane='axial'):
@@ -37,9 +38,16 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
 
     # Extract the original image name without extension
     original_image_name = os.path.splitext(os.path.basename(file_path))[0]
-    
-    # Generate the output file name
-    output_file_name = f"{original_image_name}_{plane}_{slice_number}.png"
+
+    # Build filename with suffixes
+    suffixes = [
+        f"_{slice_number}",
+        f"_{plane}",
+        f"_brightness_{brightness:.1f}",  # Example: brightness_2.0
+        f"_contrast_{contrast:.1f}",      # Example: contrast_1.5
+        f"_{colourmap}"
+    ]
+    output_file_name = original_image_name + "".join(suffixes) + ".png"
     
     # Define the output directory (you can adjust this path as needed)
     output_dir = "brainslices"
@@ -47,6 +55,11 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
     
     # Full path for the output image
     output_path = os.path.join(output_dir, output_file_name)
+
+    # Display the slice using Matplotlib
+    plt.imshow(slice_img, cmap=colourmap)  # Pass the selected colourmap
+    plt.axis('off')
+    plt.show()  
 
     # Save the image
     slice_img.save(output_path)
