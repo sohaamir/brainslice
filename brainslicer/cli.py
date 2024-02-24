@@ -4,6 +4,7 @@ from .slice import show_slice
 
 def entry_point():
     all_colourmaps = plt.colormaps()
+    top_colourmaps = all_colourmaps[:3]  # Display the first 3 colormaps
 
     parser = argparse.ArgumentParser(
         description="""
@@ -31,7 +32,7 @@ Copyright © Aamir Sohail, 2024.""",
     optional_group = parser.add_argument_group('Optional arguments')
     optional_group.add_argument("--brightness", "-b", type=float, default=1.0, help="Brightness adjustment factor (default: 1.0)")
     optional_group.add_argument("--contrast", "-con", type=float, default=1.0, help="Contrast adjustment factor (default: 1.0)")
-    optional_group.add_argument("--colourmap", "-cmap", default='gray', choices=all_colourmaps, 
+    optional_group.add_argument("--colourmap", "-cmap", default='gray', choices=top_colourmaps, 
                         help="colourmap to use for displaying the slice (default: 'gray'). Use '--list-colourmaps' for a full list.")
     optional_group.add_argument("--list-colourmaps", action="help", help="List all available colourmaps")
 
