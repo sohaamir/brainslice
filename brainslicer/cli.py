@@ -4,7 +4,6 @@ from .slice import show_slice
 
 def entry_point():
     all_colourmaps = plt.colormaps()
-    top_colourmaps = all_colourmaps[:3]  # Display the first 3 colormaps
 
     parser = argparse.ArgumentParser(
         description="""
@@ -32,11 +31,23 @@ Copyright © Aamir Sohail, 2024.""",
     optional_group = parser.add_argument_group('Optional arguments')
     optional_group.add_argument("--brightness", "-b", type=float, default=1.0, help="Brightness adjustment factor (default: 1.0)")
     optional_group.add_argument("--contrast", "-con", type=float, default=1.0, help="Contrast adjustment factor (default: 1.0)")
-    optional_group.add_argument("--colourmap", "-cmap", default='gray', choices=top_colourmaps, 
-                        help="colourmap to use for displaying the slice (default: 'gray'). Use '--list-colourmaps' for a full list.")
-    optional_group.add_argument("--list-colourmaps", action="help", help="List all available colourmaps")
+    optional_group.add_argument("--colourmap", "-cmap", default='gray', 
+                        help="Colourmap to use for displaying the slice (default: 'gray').")
+    optional_group.add_argument("--list-colourmaps", action="store_true", 
+                        help="List all available colourmaps")
+
 
     args = parser.parse_args()
+    # New logic: If the user wants to list all colourmaps, do that and exit
+    if args.list_colourmaps:
+        print("Available colormaps:", all_colourmaps)
+        return  # Exit after listing colourmaps
+
+    # Check if the provided colormap is valid
+    if args.colourmap not in all_colourmaps:
+        raise ValueError(f"Invalid colormap: {args.colourmap}. Please choose from a valid Matplotlib colormap.")
+
+
 
     show_slice(
         file_path=args.file_path,
