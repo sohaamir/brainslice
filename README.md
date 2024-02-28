@@ -1,4 +1,4 @@
-# brainslicer
+# `brainslicer`
 
 `brainslicer` is a Python package for automatically creating images from T1-anatomical NIFTIs.
 
@@ -9,12 +9,14 @@ It provides the following features:
 * Colourmap Customization: Choose from a variety of colourmaps to highlight different aspects of the image data.
 
 usage: 
-`brainslicer [-h] [--plane {axial,sagittal,coronal}] [--brightness BRIGHTNESS] [--contrast CONTRAST] [--colourmap COLOURMAP] [--list-colourmaps] file_path slice_number`
+```bash
+brainslicer [-h] [--plane {axial,sagittal,coronal}] [--brightness BRIGHTNESS] [--contrast CONTRAST] [--colourmap COLOURMAP] [--list-colourmaps] file_path slice_number
+```
 
 For more information and usage examples, use the `-h` or `--help` flags.
 
 options:
-```
+```bash
   -h, --help                           show this help message and exit
   --plane {axial,sagittal,coronal}     Plane of the slice
 
@@ -30,7 +32,7 @@ Optional arguments:
 ```
 Colourmaps are those supported by `matplotlib.colormap`. See the `matplotlib` [website](https://matplotlib.org/stable/users/explain/colors/colormaps.html) for more information.
 
-# brainslicer-ESGRAN
+# `brainslicer-ESGRAN`
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sohaamir/brainslicer/blob/main/brainslicer_upscale.ipynb) 
 [![Render Notebook](https://img.shields.io/badge/render-nbviewer-orange?logo=jupyter)](https://nbviewer.org/github/sohaamir/brainslicer/blob/main/brainslicer_upscale.ipynb)
@@ -38,8 +40,42 @@ Colourmaps are those supported by `matplotlib.colormap`. See the `matplotlib` [w
 Leveraging the significant advances made recently in upscaling images, `brainslicer-ESGRAN` is an integrated notebook that allows for users to both slice and upscale NIFTIs. 
 
 The slices are upscaled using [`Real-ESRGAN`](https://arxiv.org/abs/2107.10833), a Generative Adversarial Network capable of recovering high resolution from low resolution images.
+The key section of the code involves defining a function which takes an image file path and an output directory as input, firstly reading the image, then using the `RealESRGAN` model to predict the super-resolved (upscaled) version of the image:
 
-More information is provided in the `Colab` and `Jupyter` notebooks above.
+```python
+import torch
+from PIL import Image
+import numpy as np
+from RealESRGAN import RealESRGAN
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = RealESRGAN(device, scale=4)
+model.load_weights('/content/drive/MyDrive/projects/brainslicer/weights/RealESRGAN_x4.pth')
+
+def upscale_image(image_path, output_dir):
+    image = Image.open(image_path).convert('RGB')
+    sr_image = model.predict(image)
+
+    # Create output directory if needed
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Save images
+    base_filename = os.path.splitext(os.path.basename(image_path))[0]
+    image.save(os.path.join(output_dir, f'{base_filename}_original.png'))
+    sr_image.save(os.path.join(output_dir, f'{base_filename}_upscaled.png'))
+
+    # Display images side-by-side
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+    ax1.imshow(image)
+    ax1.set_title('Original Image')
+    ax1.axis('off')
+    ax2.imshow(sr_image)
+    ax2.set_title('Upscaled Image')
+    ax2.axis('off')
+    plt.show()
+```
+
+The complete pipeline with detailed instructions is available in the `Colab` and `Jupyter` notebooks above.
 
 ## An example of brainslicer-ESGRAN
 <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/brainslicer_example.png" width="100%">
