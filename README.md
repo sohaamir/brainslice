@@ -1,6 +1,6 @@
 # `brainslicer`
 
-`brainslicer` is a Python package for automatically creating images from T1-anatomical NIFTIs.
+`brainslicer` is a Python package for creating images (slices) from T1-anatomical NIFTIs using the command line.
 
 It provides the following features:
 
