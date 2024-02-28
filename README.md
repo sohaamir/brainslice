@@ -8,9 +8,26 @@ It provides the following features:
 * Brightness and Contrast Control: Fine-tune image appearance for better visualization.
 * Colourmap Customization: Choose from a variety of colourmaps to highlight different aspects of the image data.
 
-usage: 
+**Installation:**
+
+You can install the package via `pip` by running:
+
 ```bash
-brainslicer [-h] [--plane {axial,sagittal,coronal}] [--brightness BRIGHTNESS] [--contrast CONTRAST] [--colourmap COLOURMAP] [--list-colourmaps] file_path slice_number
+pip install git+https://github.com/sohaamir/brainslicer.git
+```
+
+**Usage:**
+
+Use `brainslicer` by supplying the following arguments:
+
+```bash
+brainslicer [-h] file_path slice_number [--plane {axial,sagittal,coronal}] [--brightness BRIGHTNESS] [--contrast CONTRAST] [--colourmap COLOURMAP] [--list-colourmaps] 
+```
+
+For example: 
+
+```bash
+brainslicer examples/example.nii 100 --plane sagittal --brightness 1.5 --contrast 1.5 --colourmap viridis
 ```
 
 For more information and usage examples, use the `-h` or `--help` flags.
@@ -30,7 +47,18 @@ Optional arguments:
   --colourmap COLOURMAP, -cmap COLOURMAP      Colourmap to use for displaying the slice (default: 'gray').
   --list-colourmaps                           List all available colourmaps
 ```
+
 Colourmaps are those supported by `matplotlib.colormap`. See the `matplotlib` [website](https://matplotlib.org/stable/users/explain/colors/colormaps.html) for more information.
+
+## Examples 
+
+Changing the contrast:
+
+<img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/contrast.png" width="100%">
+
+Changing the brightness:
+
+<img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/brightness.png" width="100%">
 
 # `brainslicer-ESGRAN`
 
