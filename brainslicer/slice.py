@@ -33,8 +33,7 @@ def adjust_brightness_contrast(image, brightness=1.0, contrast=1.0):
 
 def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, colourmap='gray'):
     slice_img_array = load_slice(file_path, slice_number, plane)
-    slice_img = Image.fromarray(slice_img_array)
-    slice_img = adjust_brightness_contrast(slice_img, brightness, contrast)
+    slice_img = adjust_brightness_contrast(Image.fromarray(slice_img_array), brightness, contrast)
 
     # Extract the original image name without extension
     original_image_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -43,8 +42,8 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
     suffixes = [
         f"_{slice_number}",
         f"_{plane}",
-        f"_brightness_{brightness:.1f}",  # Example: brightness_2.0
-        f"_contrast_{contrast:.1f}",      # Example: contrast_1.5
+        f"_brightness_{brightness:.1f}",  # 1.5 is a good default value
+        f"_contrast_{contrast:.1f}",      # 2.0 is a good default value
         f"_{colourmap}"
     ]
     output_file_name = original_image_name + "".join(suffixes) + ".png"
@@ -56,13 +55,15 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
     # Full path for the output image
     output_path = os.path.join(output_dir, output_file_name)
 
-    # Display the slice using Matplotlib
-    plt.imshow(slice_img, cmap=colourmap)  # Pass the selected colourmap
-    plt.axis('off')
-    plt.show()  
+    # Display and save the slice using Matplotlib
+    fig, ax = plt.subplots()
+    ax.imshow(slice_img_array, cmap=colourmap)  # Apply the colormap to the numpy array directly
+    ax.axis('off')  # Hide the axis
 
-    # Save the image
-    slice_img.save(output_path)
+    # Save the figure
+    fig.savefig(output_path, bbox_inches='tight', pad_inches=0)
+    plt.close(fig)  # Close the figure to free memory
+
     print(f"Image saved as '{output_path}'.")
 
 if __name__ == '__main__':
