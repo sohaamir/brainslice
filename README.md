@@ -63,9 +63,9 @@ Changing the brightness:
 Different colourmaps (viridis, ocean, plasma):
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/viridis.png" width="33%" />
-  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/ocean.png" width="33%" />
-  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/plasma.png" width="33%" />
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/viridis.png" width="32%" />
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/ocean.png" width="32%" />
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/plasma.png" width="32%" />
 </p>
 
 # brainslicer-ESGRAN
