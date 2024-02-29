@@ -1,4 +1,4 @@
-# `brainslicer`
+# brainslicer
 
 `brainslicer` is a Python package for creating images (slices) from T1-anatomical NIFTIs using the command line.
 
@@ -60,7 +60,15 @@ Changing the brightness:
 
 <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/brightness.png" width="100%">
 
-# `brainslicer-ESGRAN`
+Different colourmaps (viridis, ocean, plasma):
+
+<p float="left">
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/viridis.png" width="33%" />
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/ocean.png" width="33%" />
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/plasma.png" width="33%" />
+</p>
+
+# brainslicer-ESGRAN
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sohaamir/brainslicer/blob/main/brainslicer_upscale.ipynb) 
 [![Render Notebook](https://img.shields.io/badge/render-nbviewer-orange?logo=jupyter)](https://nbviewer.org/github/sohaamir/brainslicer/blob/main/brainslicer_upscale.ipynb)
@@ -105,7 +113,17 @@ def upscale_image(image_path, output_dir):
 
 The complete pipeline with detailed instructions is available in the `Colab` and `Jupyter` notebooks above.
 
-## An example of brainslicer-ESGRAN
-<img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/brainslicer_example.png" width="100%">
+## Examples
 
+Sagittal
+
+<img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/example_sagittal.png" width="100%">
+
+Axial
+
+<img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/example_axial.png" width="100%">
+
+Coronal
+
+<img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/example_coronal.png" width="100%">
 
