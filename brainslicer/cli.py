@@ -15,8 +15,7 @@ It provides the following features:
 * Colourmap Customization: Choose from a variety of colourmaps to highlight different aspects of the image data.
 
 For more information and usage examples, use the -h or --help flags.
-
-Copyright © Aamir Sohail, 2024.""",
+""",
         formatter_class=argparse.RawTextHelpFormatter  # Preserve formatting
     )
 
@@ -46,8 +45,6 @@ Copyright © Aamir Sohail, 2024.""",
     # Check if the provided colormap is valid
     if args.colourmap not in all_colourmaps:
         raise ValueError(f"Invalid colormap: {args.colourmap}. Please choose from a valid Matplotlib colormap.")
-
-
 
     show_slice(
         file_path=args.file_path,

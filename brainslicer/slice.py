@@ -35,6 +35,9 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
     slice_img_array = load_slice(file_path, slice_number, plane)
     slice_img = adjust_brightness_contrast(Image.fromarray(slice_img_array), brightness, contrast)
 
+    # Convert the PIL Image back to a NumPy array for display
+    slice_img_for_display = np.asarray(slice_img)
+
     # Extract the original image name without extension
     original_image_name = os.path.splitext(os.path.basename(file_path))[0]
 
@@ -42,8 +45,8 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
     suffixes = [
         f"_{slice_number}",
         f"_{plane}",
-        f"_brightness_{brightness:.1f}",  # 1.5 is a good default value
-        f"_contrast_{contrast:.1f}",      # 2.0 is a good default value
+        f"_brightness_{brightness:.1f}",  # 2.0 is a good default value
+        f"_contrast_{contrast:.1f}",      # 1.5 is a good default value
         f"_{colourmap}"
     ]
     output_file_name = original_image_name + "".join(suffixes) + ".png"
@@ -57,7 +60,7 @@ def show_slice(file_path, plane, slice_number, brightness=1.0, contrast=1.0, col
 
     # Display and save the slice using Matplotlib
     fig, ax = plt.subplots()
-    ax.imshow(slice_img_array, cmap=colourmap)  # Apply the colormap to the numpy array directly
+    ax.imshow(slice_img_for_display, cmap=colourmap)  # Use the adjusted image for display
     ax.axis('off')  # Hide the axis
 
     # Save the figure
