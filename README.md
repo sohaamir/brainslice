@@ -1,5 +1,10 @@
 # brainslicer
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/logo.png" width="70%">
+</div>
+<br>
+
 `brainslicer` is a Python package for creating images (slices) from T1-anatomical NIFTIs using the command line.
 
 It provides the following features:
@@ -75,8 +80,8 @@ Different colourmaps (viridis, ocean, plasma):
 
 Leveraging the significant advances made recently in upscaling images, `brainslicer-ESGRAN` is an integrated notebook that allows for users to both slice and upscale NIFTIs. 
 
-The slices are upscaled using [`Real-ESRGAN`](https://arxiv.org/abs/2107.10833), a Generative Adversarial Network capable of recovering high resolution from low resolution images.
-The key section of the code involves defining a function which takes an image file path and an output directory as input, firstly reading the image, then using the `RealESRGAN` model to predict the super-resolved (upscaled) version of the image:
+The slices are upscaled using [Real-ESRGAN](https://arxiv.org/abs/2107.10833), a Generative Adversarial Network capable of recovering high resolution from low resolution images.
+The key section of the code involves defining a function which takes an image file path and an output directory as input, firstly reading the image, then using the RealESRGAN model to predict the super-resolved (upscaled) version of the image:
 
 ```python
 import torch
@@ -127,3 +132,4 @@ Coronal
 
 <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/example_coronal.png" width="100%">
 
+Credit to [Looka](https://looka.com) for the AI-generated logo.
