@@ -118,6 +118,8 @@ def upscale_image(image_path, output_dir):
 
 The complete pipeline with detailed instructions is available in the `Colab` and `Jupyter` notebooks above.
 
+Model weights are available [here](https://drive.google.com/drive/folders/16PlVKhTNkSyWFx52RPb2hXPIQveNGbxS).
+
 ## Examples
 
 Sagittal
