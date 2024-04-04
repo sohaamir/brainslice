@@ -73,12 +73,12 @@ Different colourmaps (viridis, ocean, plasma):
   <img src="https://raw.githubusercontent.com/sohaamir/brainslicer/main/assets/plasma.png" width="32%" />
 </p>
 
-# brainslicer-ESGRAN
+# brainslicer-ESRGAN
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sohaamir/brainslicer/blob/main/brainslicer_upscale.ipynb) 
 [![Render Notebook](https://img.shields.io/badge/render-nbviewer-orange?logo=jupyter)](https://nbviewer.org/github/sohaamir/brainslicer/blob/main/brainslicer_upscale.ipynb)
 
-Leveraging the significant advances made recently in upscaling images, `brainslicer-ESGRAN` is an integrated notebook that allows for users to both slice and upscale NIFTIs. 
+Leveraging the significant advances made recently in upscaling images, `brainslicer-ESRGAN` is an integrated notebook that allows for users to both slice and upscale NIFTIs. 
 
 The slices are upscaled using [Real-ESRGAN](https://arxiv.org/abs/2107.10833), a Generative Adversarial Network capable of recovering high resolution from low resolution images.
 The key section of the code involves defining a function which takes an image file path and an output directory as input, firstly reading the image, then using the RealESRGAN model to predict the super-resolved (upscaled) version of the image:
